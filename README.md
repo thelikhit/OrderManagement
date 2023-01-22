@@ -43,3 +43,22 @@ PUT <code>http://localhost:8000/update</code> <br>
 Body <code> {
 "id": "abcdef-123456",
 "status": "PENDING_INVOICE"} </code>
+
+
+<hr> 
+<h2> Relational Database Schema </h2>
+
+`orders`  <br>
+`orderID` varchar(13) PRIMARY KEY NOT NULL <br>
+`status` text NOT NULL <br>
+`total` double NOT NULL <br>
+`currencyUnit` varchar(3) NOT NULL <br> <br>
+
+`items`  <br>
+`itemID` varchar(6) NOT NULL PRIMARY KEY<br>
+`orderID` varchar(13) DEFAULT NULL FOREIGN KEY REFERENCES `orders` (`orderID`) <br>
+`description` text NOT NULL <br>
+`price` double NOT NULL <br>
+`quantity` int NOT NULL <br>
+
+
